@@ -18,17 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-
       - name: Detect lockfile
         id: lockfile
         run: |
@@ -36,8 +25,26 @@ jobs:
             echo "exists=true" >> "$GITHUB_OUTPUT"
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::No pnpm-lock.yaml detected (S0 scaffold). Skipping install."
+            echo "::notice::No pnpm-lock.yaml detected (S0 scaffold). Skipping install and pnpm cache."
           fi
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node (with pnpm cache)
+        if: steps.lockfile.outputs.exists == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Setup Node (no cache)
+        if: steps.lockfile.outputs.exists == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Install dependencies
         if: steps.lockfile.outputs.exists == 'true'
