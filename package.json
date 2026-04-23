@@ -1,0 +1,31 @@
+{
+  "name": "kaiblog",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "KaiBlog - 博客 + 外部播客聚合 · DDD 三层架构",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NOmoreJoke/KaiBlog.git"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "echo 'S0 scaffold — implement in S1' && exit 0",
+    "build": "echo 'S0 scaffold — implement in S1' && exit 0",
+    "preview": "echo 'S0 scaffold — implement in S1' && exit 0",
+    "lint": "echo 'S0 scaffold — real eslint arrives in S1' && exit 0",
+    "typecheck": "echo 'S0 scaffold — real tsc arrives in S1' && exit 0",
+    "test": "echo 'S0 scaffold — real vitest arrives in S1' && exit 0",
+    "format": "echo 'S0 scaffold — real prettier arrives in S1' && exit 0",
+    "prepare": "simple-git-hooks || echo 'git hooks skipped (CI)'"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "echo 'pre-commit: lint+typecheck will be wired in S1'",
+    "commit-msg": "echo 'commit-msg: commitlint will be wired in S1 (npx --no -- commitlint --edit $1)'"
+  },
+  "devDependencies": {}
+}

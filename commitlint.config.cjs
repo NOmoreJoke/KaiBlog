@@ -1,0 +1,46 @@
+/** @type {import('@commitlint/types').UserConfig} */
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'feat',
+        'fix',
+        'refactor',
+        'docs',
+        'chore',
+        'test',
+        'perf',
+        'style',
+        'ci',
+        'build',
+        'revert',
+      ],
+    ],
+    'scope-enum': [
+      2,
+      'always',
+      [
+        'content',
+        'taxonomy',
+        'media',
+        'podcast',
+        'profile',
+        'editor',
+        'infra',
+        'admin',
+        'web',
+        'db',
+        'ci',
+        'deps',
+      ],
+    ],
+    'scope-empty': [1, 'never'],
+    'subject-case': [2, 'never', ['upper-case', 'pascal-case', 'start-case']],
+    'subject-full-stop': [2, 'never', '.'],
+    'header-max-length': [2, 'always', 72],
+    'body-max-line-length': [1, 'always', 100],
+  },
+};
