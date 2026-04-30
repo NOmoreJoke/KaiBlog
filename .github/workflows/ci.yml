@@ -63,15 +63,7 @@ jobs:
         run: pnpm build
 
       - name: Domain purity check
-        run: |
-          if [ -d src/domain ]; then
-            if grep -rE "from ['\"](react|@supabase|@tiptap|axios)" src/domain/ 2>/dev/null; then
-              echo "::error::Domain layer must not import framework code."
-              exit 1
-            fi
-          else
-            echo "::notice::src/domain not yet created (S0 scaffold)."
-          fi
+        run: bash scripts/domain-purity-check.sh
 
   commit-lint:
     name: Commit message lint
