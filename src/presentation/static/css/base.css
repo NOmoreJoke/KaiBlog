@@ -1,0 +1,123 @@
+/* KaiBlog · 基础原子（reset / 排版 / 全局导航 / 按钮 / 徽章） */
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; height: 100%; }
+
+body {
+  font-family: var(--font-cn);
+  background: var(--paper);
+  color: var(--ink-100);
+}
+
+.kb {
+  font-family: var(--font-cn);
+  color: var(--ink-100);
+  background: var(--paper);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+  min-height: 100%;
+}
+
+.kb a { color: inherit; text-decoration: none; }
+.kb a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.kb button { font-family: inherit; cursor: pointer; border: none; background: none; padding: 0; color: inherit; }
+
+/* 键盘焦点（design.md §9） */
+.kb a:focus-visible,
+.kb button:focus-visible,
+.kb input:focus-visible,
+.kb textarea:focus-visible {
+  outline: 2px solid var(--ink-80);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* 全局导航 */
+.kb-nav {
+  height: 64px;
+  border-bottom: 1px solid var(--ink-10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.kb-logo { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+.kb-tabs { display: flex; gap: 4px; height: 64px; align-items: stretch; }
+.kb-tab {
+  padding: 0 14px;
+  font-size: 15px;
+  color: var(--ink-60);
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  transition: color 120ms;
+}
+.kb-tab:hover { color: var(--ink-80); }
+.kb-tab.active { color: var(--ink-100); border-bottom-color: var(--ink-100); font-weight: 500; }
+
+/* 页面容器 */
+.kb-page { padding: 48px 40px 96px; }
+.kb-container { max-width: 720px; margin: 0 auto; }
+.kb-container-wide { max-width: 960px; margin: 0 auto; }
+.kb-container-article { max-width: 680px; margin: 0 auto; }
+
+.kb-tagline { font-size: 14px; color: var(--ink-40); margin-bottom: 48px; max-width: 520px; line-height: 1.6; }
+
+.kb-divider { height: 1px; background: var(--ink-10); margin: 40px 0; }
+
+/* 通用按钮（前后台共用） */
+.kb-btn {
+  font-size: 13px;
+  padding: 0 14px;
+  height: 32px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: all 120ms;
+  white-space: nowrap;
+}
+.kb-btn-primary { background: var(--ink-100); color: var(--paper); }
+.kb-btn-primary:hover { background: var(--accent-hover); }
+.kb-btn-secondary { background: var(--paper); color: var(--ink-80); border: 1px solid var(--ink-20); }
+.kb-btn-secondary:hover { border-color: var(--ink-80); }
+.kb-btn-ghost { color: var(--ink-60); }
+.kb-btn-ghost:hover { color: var(--ink-80); }
+.kb-btn-danger { background: var(--paper); color: var(--danger); border: 1px solid var(--danger); }
+.kb-btn-danger:hover { background: var(--danger); color: var(--paper); }
+
+/* 状态徽章（前后台共用） */
+.kb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+}
+.kb-badge-draft { background: #f0f0f0; color: var(--ink-60); }
+.kb-badge-public { background: #e8f3ec; color: var(--success); }
+.kb-badge-link { background: #fdf5e8; color: var(--warning); }
+.kb-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+/* canvas 背景 */
+.kb-cb { background: var(--paper); }
+
+/* 移动端断点（design.md §10） */
+@media (max-width: 640px) {
+  .kb-nav { padding: 0 24px; height: 56px; }
+  .kb-tabs { height: 56px; }
+  .kb-page { padding: 32px 24px 64px; }
+}

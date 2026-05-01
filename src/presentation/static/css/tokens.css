@@ -1,0 +1,31 @@
+/* KaiBlog Design Tokens · 对齐 docs/design.md v1.0 */
+:root {
+  --ink-100: #0b0b0b;
+  --ink-80: #1f1f1f;
+  --ink-60: #4a4a4a;
+  --ink-40: #8a8a8a;
+  --ink-20: #c8c8c8;
+  --ink-10: #e8e8e8;
+  --paper: #ffffff;
+  --paper-soft: #fafafa;
+
+  --accent: #0b0b0b;
+  --accent-hover: #3a3a3a;
+
+  --success: #1f6e43;
+  --warning: #8a5a00;
+  --danger: #8a1f1f;
+
+  --font-cn: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-en: "Inter", "SF Pro Text", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+}
+
+/* 暗色模式预留（design.md §3.2）—— 二期实现 */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    --ink-100: #f5f5f5;
+    --paper: #0b0b0b;
+    --paper-soft: #171717;
+  }
+}

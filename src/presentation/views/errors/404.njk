@@ -1,0 +1,18 @@
+{% extends "_layout/base.njk" %}
+{% from "_macros/nav.njk" import nav %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ assets('css/web.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="kb kb-cb">
+  {{ nav() }}
+  <main class="kb-page">
+    <div class="kb-container">
+      <p class="kb-tagline" style="margin-bottom: 24px;">404 · 你在找的页面不存在</p>
+      <a href="/" class="kb-btn kb-btn-secondary">返回首页</a>
+    </div>
+  </main>
+</div>
+{% endblock %}
