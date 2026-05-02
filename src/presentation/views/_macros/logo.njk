@@ -1,0 +1,41 @@
+{# NOmoreJoke 几何字标系统（design.md §14）
+
+  - 主标 logo_primary：左上角开口方框 + 几何化 NO
+  - 折叠版 logo_mark：仅方框 NO，用于移动端 / favicon
+
+  使用：
+    {% from "_macros/logo.njk" import logo_primary, logo_mark %}
+    {{ logo_primary(28) }}
+    {{ logo_mark(22) }}
+#}
+
+{%- macro logo_primary(size=28, reverse=false) -%}
+{%- set ink = '#ffffff' if reverse else '#0b0b0b' -%}
+{%- set stroke = ((size / 14) | round | int) -%}
+{%- set stroke = 2 if stroke < 2 else stroke -%}
+{%- set fontSize = ((size * 0.52) | round | int) -%}
+{%- set notch = 0.25 -%}
+<span class="nmj-logo" style="display:inline-flex;align-items:center;height:{{ size }}px;color:{{ ink }};">
+  <svg width="{{ size }}" height="{{ size }}" viewBox="0 0 {{ size }} {{ size }}" style="display:block;flex-shrink:0;" aria-label="NOmoreJoke">
+    <path d="M {{ size * notch }} {{ stroke / 2 }} L {{ size - stroke / 2 }} {{ stroke / 2 }} L {{ size - stroke / 2 }} {{ size - stroke / 2 }} L {{ stroke / 2 }} {{ size - stroke / 2 }} L {{ stroke / 2 }} {{ size * notch }}"
+      fill="none" stroke="{{ ink }}" stroke-width="{{ stroke }}" stroke-linecap="square" stroke-linejoin="miter"/>
+    <text x="{{ size / 2 }}" y="{{ size * 0.72 }}" font-size="{{ fontSize }}" font-weight="700"
+      font-family="Inter, &quot;SF Pro Text&quot;, system-ui, sans-serif"
+      text-anchor="middle" fill="{{ ink }}" letter-spacing="-0.02em">NO</text>
+  </svg>
+</span>
+{%- endmacro -%}
+
+{%- macro logo_mark(size=24, reverse=false) -%}
+{%- set ink = '#ffffff' if reverse else '#0b0b0b' -%}
+{%- set stroke = ((size / 14) | round | int) -%}
+{%- set stroke = 2 if stroke < 2 else stroke -%}
+{%- set fontSize = ((size * 0.52) | round | int) -%}
+<svg width="{{ size }}" height="{{ size }}" viewBox="0 0 {{ size }} {{ size }}" style="display:block;flex-shrink:0;" aria-label="NOmoreJoke mark">
+  <path d="M {{ size * 0.25 }} {{ stroke / 2 }} L {{ size - stroke / 2 }} {{ stroke / 2 }} L {{ size - stroke / 2 }} {{ size - stroke / 2 }} L {{ stroke / 2 }} {{ size - stroke / 2 }} L {{ stroke / 2 }} {{ size * 0.25 }}"
+    fill="none" stroke="{{ ink }}" stroke-width="{{ stroke }}" stroke-linecap="square" stroke-linejoin="miter"/>
+  <text x="{{ size / 2 }}" y="{{ size * 0.72 }}" font-size="{{ fontSize }}" font-weight="700"
+    font-family="Inter, &quot;SF Pro Text&quot;, system-ui, sans-serif"
+    text-anchor="middle" fill="{{ ink }}" letter-spacing="-0.02em">NO</text>
+</svg>
+{%- endmacro -%}

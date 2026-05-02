@@ -1,0 +1,17 @@
+{% extends "_layout/base.njk" %}
+{% from "_macros/nav.njk" import nav %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ assets('css/web.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="kb kb-cb">
+  {{ nav(activeNav) }}
+  <main class="kb-page">
+    <div class="kb-container">
+      <p class="kb-tagline">写博客，聚合播客，做一份自己看得下去的内容档案。<br>没有推送，没有广告，欢迎加书签。</p>
+    </div>
+  </main>
+</div>
+{% endblock %}

@@ -47,3 +47,7 @@ coverage/
 *.pem
 *.key
 id_rsa*
+
+# 设计稿 handoff 包（落地完成后清理；规范源已复制到 docs/design.md）
+/blog/
+/blog-handoff.zip

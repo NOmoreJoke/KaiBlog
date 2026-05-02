@@ -1,0 +1,20 @@
+{# 全站顶部导航（design.md §6.1） #}
+
+{%- from "_macros/logo.njk" import logo_primary -%}
+
+{%- macro nav(active='') -%}
+{%- set tabs = [
+  { key: 'all', label: '全部', href: '/' },
+  { key: 'blog', label: '博客', href: '/blog' },
+  { key: 'podcast', label: '播客', href: '/podcasts' },
+  { key: 'about', label: '关于我', href: '/about' }
+] -%}
+<header class="kb-nav" role="banner">
+  <a class="kb-logo" href="/" aria-label="返回首页">{{ logo_primary(26) }}</a>
+  <nav class="kb-tabs" aria-label="主导航">
+    {% for tab in tabs -%}
+    <a class="kb-tab{% if tab.key == active %} active{% endif %}" href="{{ tab.href }}">{{ tab.label }}</a>
+    {%- endfor %}
+  </nav>
+</header>
+{%- endmacro -%}

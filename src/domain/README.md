@@ -2,7 +2,7 @@
 
 纯领域层：实体、值对象、领域服务、仓储接口。
 
-**铁律**：本目录下禁止 `import` 任何框架代码（react / @supabase / @tiptap / axios / fetch）。
+**铁律**：本目录下禁止 `import` 任何框架或 I/O 代码（express / @supabase / axios / fetch / node:fs / dotenv）。
 
 子域（S1 起逐步填充）：
 

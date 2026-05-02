@@ -6,10 +6,11 @@
 
 ## 技术栈
 
-- TypeScript + React 18 + Vite 5
-- Tiptap（富文本编辑器，含小宇宙链接识别扩展）
-- Supabase（PostgreSQL + Storage + RLS）
+- Node.js ≥ 20 + Express + TypeScript (strict)
+- Nunjucks（服务端模板引擎，SEO 友好）
+- Supabase（PostgreSQL + Storage + Auth + RLS）
 - DDD 三层架构（domain / application / infrastructure）
+- Zod（输入校验） · Helmet + rate-limit（安全）
 - Vitest · ESLint · Prettier · pnpm
 
 ## 快速开始
@@ -17,7 +18,7 @@
 ```bash
 pnpm install
 cp .env.example .env
-# 填入 Supabase / GLM / 小宇宙 MCP 等密钥
+# 填入 Supabase / GLM 等密钥（密钥仅服务端使用，不暴露到前端）
 pnpm dev
 ```
 
@@ -27,10 +28,15 @@ pnpm dev
 src/
   domain/           # 纯领域层（无任何框架依赖）
   application/      # 用例编排层
-  infrastructure/   # 技术实现层（Supabase / Tiptap / AI / 嵌入解析）
-  presentation/     # UI 层（React）
+  infrastructure/   # 技术实现层（Supabase / LLM / 嵌入解析）
+  presentation/     # Express 路由 + Nunjucks 模板
+  server.ts         # 应用入口
+docs/
+  intent.md         # 产品意图文档
 supabase/
   migrations/       # 数据库迁移
+scripts/
+  domain-purity-check.sh  # 领域纯净性检查
 ```
 
 ## 协作契约
@@ -40,18 +46,20 @@ supabase/
 ## 常用脚本
 
 ```bash
-pnpm dev          # 本地开发
-pnpm build        # 生产构建
+pnpm dev          # 本地开发（tsx watch 热重载）
+pnpm build        # TypeScript 编译
+pnpm start        # 运行编译后的生产版本
 pnpm lint         # ESLint
 pnpm typecheck    # TypeScript 类型检查
 pnpm test         # 单元测试
 pnpm format       # Prettier 格式化
+pnpm domain:check # 领域纯净性检查
 ```
 
 ## 版本里程碑
 
 - `v0.1.0` — DDD 骨架 + Content + Taxonomy
-- `v0.2.0` — Tiptap 编辑器 + 播客双入口 + 订阅同步
+- `v0.2.0` — 编辑器 + 播客双入口 + 订阅同步
 - `v0.3.0` — 关于我 + AI 后置自动化
 - `v1.0.0` — 首个生产版本
 

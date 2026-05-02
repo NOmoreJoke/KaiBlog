@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ title or site.name }}{% endblock %}{% if title and title != site.name %} · {{ site.name }}{% endif %}</title>
+  <meta name="description" content="{% block description %}{{ description or '极简风格的个人博客与播客聚合站' }}{% endblock %}">
+  <meta name="color-scheme" content="light">
+
+  {% block og %}
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:url" content="{{ site.url }}{{ canonicalPath or '' }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  {% endblock %}
+
+  <link rel="stylesheet" href="{{ assets('css/tokens.css') }}">
+  <link rel="stylesheet" href="{{ assets('css/base.css') }}">
+  {% block styles %}{% endblock %}
+</head>
+<body>
+  {% block body %}{% endblock %}
+  {% block scripts %}{% endblock %}
+</body>
+</html>
